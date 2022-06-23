@@ -2,6 +2,7 @@ package com.company.card;
 
 import com.company.Deck;
 import com.company.PlayerStatus;
+import com.company.RemainDeck;
 
 public class King extends Card{
 
@@ -11,7 +12,18 @@ public class King extends Card{
     }
 
     @Override
-    public void action(PlayerStatus hostPlayer, int number, PlayerStatus clientPlayer, Deck deck) {
-
+    public void action(PlayerStatus hostPlayer, int number, PlayerStatus clientPlayer, Deck deck, RemainDeck remainDeck) {
+        if(hostPlayer.getCard().cardValue() == 7){
+            Card card = new Princess();
+            hostPlayer.setCard(card);
+            remainDeck.discard(this);
+        }
+        else{
+            Card temp;
+            temp = hostPlayer.getCard();
+            hostPlayer.setCard(clientPlayer.getCard());
+            clientPlayer.setCard(temp);
+            remainDeck.discard(this);
+        }
     }
 }

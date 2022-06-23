@@ -5,7 +5,7 @@ import com.company.card.*;
 import java.util.*;
 
 public class Deck {
-    List<Card> cards = new ArrayList<>(List.of(
+    public List<Card> cards = new ArrayList<>(List.of(
             new Guard(),new Guard(),new Guard(),new Guard(),new Guard(),
             new Priest(),new Priest(),
             new Baron(),new Baron(),
