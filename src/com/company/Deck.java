@@ -6,12 +6,11 @@ import java.util.*;
 
 public class Deck {
     public List<Card> cards = new ArrayList<>(List.of(
-            new Guard(),new Guard(),new Guard(),new Guard(),new Guard(),
-            new Priest(),new Priest(),
+            new Guard(),new Guard(),new Guard(),new Guard(),new Guard(),new King(),
+            new Priest(),new Priest(),new Princess(),
             new Baron(),new Baron(),
             new HandMaid(),new HandMaid(),
-            new Prince(),new Prince(),
-            new King(),new Countess(),new Princess()
+            new Countess(),new Prince(),new Prince()
     ));
 
     Deck(){

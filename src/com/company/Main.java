@@ -46,7 +46,9 @@ public class Main {
     }
 
     boolean running(PlayerStatus player , int j) {
+        System.out.println("you : " + j);
         information(player);
+        System.out.println();
         Card card = player.turn(deck);
         System.out.println("you : " + j);
         if (player.getStatus() == PlayerStatus.Status.infeasible) player.setStatus(PlayerStatus.Status.alive);
@@ -90,7 +92,10 @@ public class Main {
             guessNumber = sca.nextInt();
         }
         card.action(player, guessNumber, playerlist[clientPlayer], deck, remainDeck);
+        System.out.println();
+        System.out.println("player : " + j);
         information(player);
+        System.out.println();
         count_dead = 0;
         for (int i = 0; i < playerNumber; i++) {
             if (playerlist[i].getStatus() == PlayerStatus.Status.dead) count_dead++;
@@ -130,7 +135,7 @@ public class Main {
 
     }
     void information(PlayerStatus player){
-        System.out.println("your card" + player.getCard());
+        System.out.println("your card " + player.getCard());
         System.out.println("left card" + remainDeck.remain);
     }
     void view_all_information(int playerNumber){
@@ -140,5 +145,4 @@ public class Main {
             System.out.println();
         }
     }
-    // TODO: when the stage of running start, we need to check weather the player is dead of not
 }

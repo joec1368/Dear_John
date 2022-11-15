@@ -14,7 +14,7 @@ public class King extends Card{
     @Override
     public void action(PlayerStatus hostPlayer, int number, PlayerStatus clientPlayer, Deck deck, RemainDeck remainDeck) {
         if(hostPlayer.getCard().cardValue() == 7){
-            Card card = new Princess();
+            Card card = new Countess();
             hostPlayer.setCard(card);
             remainDeck.discard(this);
         }

@@ -15,7 +15,7 @@ public class PlayerStatus {
 
     public Card turn(Deck deck) {
         Card card = deck.draw();
-        System.out.println(card + " " + this.getCard());
+        System.out.println("id : " + card.cardValue() + "  card name :  " + card + " ||| " + " id : " +  this.getCard().cardValue() +"  card name :  " + this.getCard());
         System.out.println("left , right");
         Scanner sca = new Scanner(System.in);
         boolean discardNew = true;
