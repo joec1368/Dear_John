@@ -9,4 +9,10 @@ public class Output_static {
         System.out.println(clientPlayer.getCard().toString());
     }
 
+    public static void broadcast_the_card_be_discard(PlayerStatus playerStatus){
+        System.out.println();
+        System.out.println(" it is the card which is discarded : " + playerStatus.getCard());
+        System.out.println();
+    }
+
 }

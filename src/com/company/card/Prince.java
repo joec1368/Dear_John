@@ -1,6 +1,7 @@
 package com.company.card;
 
 import com.company.Deck;
+import com.company.Output_static;
 import com.company.PlayerStatus;
 import com.company.RemainDeck;
 
@@ -19,7 +20,7 @@ public class Prince extends Card{
             remainDeck.discard(this);
         }
         else {
-            System.out.print(clientPlayer.getCard());
+            Output_static.broadcast_the_card_be_discard(clientPlayer);
             remainDeck.discard(clientPlayer.getCard());
             if(deck.cards.size() == 0 || clientPlayer.getCard().cardValue() == 8){
                 clientPlayer.setStatus(PlayerStatus.Status.dead);
