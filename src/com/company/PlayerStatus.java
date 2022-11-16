@@ -9,6 +9,7 @@ public class PlayerStatus {
     private Card card;
     private Status status;
     private Output output;
+    private int id;
 
     public void setupDraw(Deck deck) {
         this.card = deck.draw();
@@ -35,8 +36,9 @@ public class PlayerStatus {
     public enum Status {
         alive, dead, infeasible
     }
-    PlayerStatus(){
+    PlayerStatus(int id){
         status = Status.alive;
+        this.id = id;
     }
     public Card getCard(){
         return card;
@@ -49,4 +51,8 @@ public class PlayerStatus {
     }
     public void setStatus(Status status){this.status = status;}
     public void setOutput(Output output){this.output = output;}
+
+    public int getId() {
+        return id;
+    }
 }

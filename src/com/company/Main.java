@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.card.Card;
+import com.company.io.SingleOutput;
 
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class Main {
         setup();
         int i = 0;
         while (true) {
-            output.broadcast_player_status();
+            output.broadcast_player_status(playerlist);
             if (playerlist[i].getStatus() != PlayerStatus.Status.dead)
                 if (running(playerlist[i],i)) break;
             i++;
@@ -27,18 +28,16 @@ public class Main {
     Deck deck;
     PlayerStatus[] playerlist;
     RemainDeck remainDeck;
-    Scanner sca;
     Output output;
 
     void setup() {
         Output_static.broadcast_number_of_people();
-        sca = new Scanner(System.in);
         playerNumber = Input.player_Number();
         playerlist = new PlayerStatus[playerNumber];
-        for (int i = 0; i < playerNumber; i++) playerlist[i] = new PlayerStatus();
+        for (int i = 0; i < playerNumber; i++) playerlist[i] = new PlayerStatus(i);
         deck = new Deck();
         remainDeck = new RemainDeck();
-        output = new Output(playerlist ,deck,remainDeck,playerNumber);
+        output = new Output(remainDeck, new SingleOutput());
         for (PlayerStatus player : playerlist) {
             player.setStatus(PlayerStatus.Status.alive);
             player.setupDraw(deck);
