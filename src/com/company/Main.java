@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.card.Card;
+import com.company.io.SingleInput;
 import com.company.io.SingleOutput;
 
 public class Main {
@@ -27,10 +28,11 @@ public class Main {
     PlayerStatus[] playerlist;
     RemainDeck remainDeck;
     Output output = new Output(new SingleOutput());
+    Input input = new Input(new SingleInput());
 
     void setup() {
         output.broadcast_number_of_people();
-        playerNumber = Input.player_Number();
+        playerNumber = input.player_Number();
         playerlist = new PlayerStatus[playerNumber];
         for (int i = 0; i < playerNumber; i++) playerlist[i] = new PlayerStatus(i);
         deck = new Deck();
@@ -38,7 +40,6 @@ public class Main {
         for (PlayerStatus player : playerlist) {
             player.setStatus(PlayerStatus.Status.alive);
             player.setupDraw(deck);
-            player.setOutput(output);
         }
 
 
@@ -48,7 +49,7 @@ public class Main {
 //        System.out.println("you : " + j);
 //        information(player);
 //        System.out.println();
-        Card card = player.turn(deck);
+        Card card = player.turn(deck, input, output);
         output.broadcast_show_use_card(j,card);
 //        System.out.println("you : " + j);
         if (player.getStatus() == PlayerStatus.Status.infeasible) player.setStatus(PlayerStatus.Status.alive);
@@ -66,7 +67,7 @@ public class Main {
             if (count > 1) {
                 while (true) {
                     output.individual_choose_target();
-                    clientPlayer = Input.client_player();
+                    clientPlayer = input.client_player();
                     if (playerlist[clientPlayer].getStatus() == PlayerStatus.Status.alive) break;
                 }
                 output.broadcast_show_target(j,clientPlayer);
@@ -91,7 +92,7 @@ public class Main {
         }
         if (card.cardValue() == 1) {
             output.individual_choose_target_number();
-            guessNumber = Input.guess_Number();
+            guessNumber = input.guess_Number();
             output.broadcast_show_target_number(j,guessNumber);
         }
         card.action(player, guessNumber, playerlist[clientPlayer], deck, remainDeck, output);

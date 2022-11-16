@@ -8,20 +8,18 @@ import java.util.Scanner;
 public class PlayerStatus {
     private Card card;
     private Status status;
-    private Output output;
     private int id;
 
     public void setupDraw(Deck deck) {
         this.card = deck.draw();
     }
 
-    public Card turn(Deck deck) {
+    public Card turn(Deck deck, Input input, Output output) {
         Card card = deck.draw();
         output.individual_card_set(this,card);
         output.individual_left_right();
-        Scanner sca = new Scanner(System.in);
         boolean discardNew = true;
-        String temp = Input.input_left_right();
+        String temp = input.input_left_right();
         if(temp.equals("right")) discardNew = false;
         //decide by input
         if(discardNew){
@@ -50,7 +48,6 @@ public class PlayerStatus {
         return status;
     }
     public void setStatus(Status status){this.status = status;}
-    public void setOutput(Output output){this.output = output;}
 
     public int getId() {
         return id;

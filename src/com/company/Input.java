@@ -1,26 +1,27 @@
 package com.company;
 
-import java.util.Scanner;
+import com.company.io.SingleInput;
+
 
 public class Input {
-
-    public static String input_left_right(){
-        Scanner sca = new Scanner(System.in);
-        return sca.next();
+    private SingleInput input;
+    public Input(SingleInput input) {
+        this.input = input;
     }
 
-    public static int player_Number(){
-        Scanner sca = new Scanner(System.in);
-        return sca.nextInt();
+    public String input_left_right(){
+        return input.next();
     }
 
-    public static int client_player(){
-        Scanner sca = new Scanner(System.in);
-        return sca.nextInt();
+    public int player_Number(){
+        return input.nextInt();
     }
 
-    public static int guess_Number(){
-        Scanner sca = new Scanner(System.in);
-        return sca.nextInt();
+    public int client_player(){
+        return input.nextInt();
+    }
+
+    public int guess_Number(){
+        return input.nextInt();
     }
 }
