@@ -48,8 +48,20 @@ public class Output {
         System.out.println("target : ");
     }
 
+    public void broadcast_show_target(int j,int i){
+        System.out.println();
+        System.out.println(j + " use card on " + i);
+        System.out.println();
+    }
+
     public void individual_choose_target_number(){
         System.out.println("number : ");
+    }
+
+    public void broadcast_show_target_number(int j,int guessNumber){
+        System.out.println();
+        System.out.println(j + " guess the card of number is : " + guessNumber);
+        System.out.println();
     }
 
     public void broadcast_winner(int winPlayerSecond,int winPlayer){
@@ -58,5 +70,11 @@ public class Output {
         else
             System.out.print("winner : " + String.valueOf(winPlayer) + "," + String.valueOf(winPlayerSecond));
 
+    }
+
+    public void broadcast_show_use_card(int j,Card card){
+        System.out.println();
+        System.out.println(j + " use card : " + card);
+        System.out.println();
     }
 }

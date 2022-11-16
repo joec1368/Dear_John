@@ -53,6 +53,7 @@ public class Main {
 //        information(player);
 //        System.out.println();
         Card card = player.turn(deck);
+        output.broadcast_show_use_card(j,card);
 //        System.out.println("you : " + j);
         if (player.getStatus() == PlayerStatus.Status.infeasible) player.setStatus(PlayerStatus.Status.alive);
         int guessNumber = 0;// decide by input
@@ -72,7 +73,9 @@ public class Main {
                     clientPlayer = Input.client_player();
                     if (playerlist[clientPlayer].getStatus() == PlayerStatus.Status.alive) break;
                 }
+                output.broadcast_show_target(j,clientPlayer);
             } else {
+                remainDeck.discard(card);
                 count_dead = 0;
                 int  count_infeasible = 0;
                 for (int i = 0; i < playerNumber; i++) {
@@ -93,6 +96,7 @@ public class Main {
         if (card.cardValue() == 1) {
             output.individual_choose_target_number();
             guessNumber = Input.guess_Number();
+            output.broadcast_show_target_number(j,guessNumber);
         }
         card.action(player, guessNumber, playerlist[clientPlayer], deck, remainDeck);
 //        System.out.println();
