@@ -2,6 +2,8 @@ package com.company;
 
 import com.company.io.InputMethod;
 
+import java.util.Scanner;
+
 
 public class Input {
     private InputMethod input;
@@ -9,19 +11,19 @@ public class Input {
         this.input = input;
     }
 
-    public String input_left_right(){
-        return input.next();
+    public String input_left_right(PlayerStatus player){
+        return input.next(player.getId());
     }
 
-    public int player_Number(){
-        return input.nextInt();
+    public int host_player_Number(){
+        return input.nextInt(0);
     }
 
-    public int client_player(){
-        return input.nextInt();
+    public int client_player(PlayerStatus player){
+        return input.nextInt(player.getId());
     }
 
-    public int guess_Number(){
-        return input.nextInt();
+    public int guess_Number(PlayerStatus player){
+        return input.nextInt(player.getId());
     }
 }

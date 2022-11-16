@@ -10,8 +10,8 @@ public class Output {
         this.output = output;
     }
 
-    public void broadcast_number_of_people(){
-        output.println("number of people");
+    public void host_number_of_people(){
+        output.println("number of people", 0);
     }
 
     public void individual_card_set(PlayerStatus playerstatus, Card new_card){

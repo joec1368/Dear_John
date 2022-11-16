@@ -11,11 +11,11 @@ class SingleInput implements InputMethod {
     }
 
     @Override
-    public String next() {
+    public String next(int id) {
         return scanner.next();
     }
     @Override
-    public int nextInt() {
+    public int nextInt(int id) {
         return  scanner.nextInt();
     }
 }

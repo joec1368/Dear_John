@@ -19,7 +19,7 @@ public class PlayerStatus {
         output.individual_card_set(this,card);
         output.individual_left_right(this);
         boolean discardNew = true;
-        String temp = input.input_left_right();
+        String temp = input.input_left_right(this);
         if(temp.equals("right")) discardNew = false;
         //decide by input
         if(discardNew){

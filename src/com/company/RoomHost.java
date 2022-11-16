@@ -3,11 +3,11 @@ package com.company;
 import com.company.card.Card;
 import com.company.io.singlemachine.SingleIO;
 
-public class Main {
+public class RoomHost {
 
     public static void main(String[] args) {
-        Main main = new Main();
-        main.start(args);
+        RoomHost host = new RoomHost();
+        host.start(args);
     }
 
     public void start(String[] args) {
@@ -31,8 +31,8 @@ public class Main {
     Input input = new Input(io.getInput());
 
     void setup() {
-        output.broadcast_number_of_people();
-        playerNumber = input.player_Number();
+        output.host_number_of_people();
+        playerNumber = input.host_player_Number();
         playerlist = new PlayerStatus[playerNumber];
         for (int i = 0; i < playerNumber; i++) playerlist[i] = new PlayerStatus(i);
         deck = new Deck();
@@ -41,8 +41,6 @@ public class Main {
             player.setStatus(PlayerStatus.Status.alive);
             player.setupDraw(deck);
         }
-
-
     }
 
     boolean running(PlayerStatus player , int j) {
@@ -67,7 +65,7 @@ public class Main {
             if (count > 1) {
                 while (true) {
                     output.individual_choose_target(player);
-                    clientPlayer = input.client_player();
+                    clientPlayer = input.client_player(player);
                     if (playerlist[clientPlayer].getStatus() == PlayerStatus.Status.alive) break;
                 }
                 output.broadcast_show_target(j,clientPlayer);
@@ -92,7 +90,7 @@ public class Main {
         }
         if (card.cardValue() == 1) {
             output.individual_choose_target_number(player);
-            guessNumber = input.guess_Number();
+            guessNumber = input.guess_Number(player);
             output.broadcast_show_target_number(j,guessNumber);
         }
         card.action(player, guessNumber, playerlist[clientPlayer], deck, remainDeck, output);
