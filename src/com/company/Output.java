@@ -64,4 +64,14 @@ public class Output {
         output.println(j + " use card : " + card);
         output.println();
     }
+
+    public void individual_opponent_card(PlayerStatus clientPlayer){
+        System.out.println(clientPlayer.getCard().toString());
+    }
+
+    public void broadcast_the_card_be_discard(PlayerStatus playerStatus){
+        System.out.println();
+        System.out.println(" it is the card which is discarded : " + playerStatus.getCard());
+        System.out.println();
+    }
 }

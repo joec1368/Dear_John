@@ -3,8 +3,6 @@ package com.company;
 import com.company.card.Card;
 import com.company.io.SingleOutput;
 
-import java.util.Scanner;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -96,7 +94,7 @@ public class Main {
             guessNumber = Input.guess_Number();
             output.broadcast_show_target_number(j,guessNumber);
         }
-        card.action(player, guessNumber, playerlist[clientPlayer], deck, remainDeck);
+        card.action(player, guessNumber, playerlist[clientPlayer], deck, remainDeck, output);
 //        System.out.println();
 //        System.out.println("player : " + j);
 //        information(player);

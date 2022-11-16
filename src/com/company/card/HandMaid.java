@@ -1,6 +1,7 @@
 package com.company.card;
 
 import com.company.Deck;
+import com.company.Output;
 import com.company.PlayerStatus;
 import com.company.RemainDeck;
 
@@ -13,7 +14,7 @@ public class HandMaid extends Card{
     }
 
     @Override
-    public void action(PlayerStatus hostPlayer, int number, PlayerStatus clientPlayer, Deck deck, RemainDeck remainDeck) {
+    public void action(PlayerStatus hostPlayer, int number, PlayerStatus clientPlayer, Deck deck, RemainDeck remainDeck, Output output) {
         hostPlayer.setStatus(PlayerStatus.Status.infeasible);
         remainDeck.discard(this);
     }

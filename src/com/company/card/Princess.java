@@ -1,6 +1,7 @@
 package com.company.card;
 
 import com.company.Deck;
+import com.company.Output;
 import com.company.PlayerStatus;
 import com.company.RemainDeck;
 
@@ -12,7 +13,7 @@ public class Princess extends Card{
     }
 
     @Override
-    public void action(PlayerStatus hostPlayer, int number, PlayerStatus clientPlayer, Deck deck, RemainDeck remainDeck) {
+    public void action(PlayerStatus hostPlayer, int number, PlayerStatus clientPlayer, Deck deck, RemainDeck remainDeck, Output output) {
         remainDeck.discard(this);
         hostPlayer.setStatus(PlayerStatus.Status.dead);
         remainDeck.discard(hostPlayer.getCard());

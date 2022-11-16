@@ -1,11 +1,9 @@
 package com.company.card;
 
 import com.company.Deck;
+import com.company.Output;
 import com.company.PlayerStatus;
 import com.company.RemainDeck;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public abstract class Card {
 
@@ -15,7 +13,7 @@ public abstract class Card {
     }
 
     protected abstract int value();
-    public abstract void action(PlayerStatus hostPlayer, int number, PlayerStatus clientPlayer, Deck deck, RemainDeck remainDeck);
+    public abstract void action(PlayerStatus hostPlayer, int number, PlayerStatus clientPlayer, Deck deck, RemainDeck remainDeck, Output output);
 
     public int cardValue(){
         return value();
