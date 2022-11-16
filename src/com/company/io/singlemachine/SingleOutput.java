@@ -1,15 +1,18 @@
-package com.company.io;
+package com.company.io.singlemachine;
 
-public class SingleOutput {
-    SingleOutput() {
-        //only to make constructor package-private
-    }
+import com.company.io.OutputMethod;
+
+class SingleOutput implements OutputMethod {
+
+    @Override
     public void println() {
         System.out.println();
     }
+    @Override
     public void println(String string) {
         System.out.println(string);
     }
+    @Override
     public void print(String string) {
         System.out.print(string);
     }

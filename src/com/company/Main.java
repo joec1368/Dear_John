@@ -1,9 +1,7 @@
 package com.company;
 
 import com.company.card.Card;
-import com.company.io.SingleIO;
-import com.company.io.SingleInput;
-import com.company.io.SingleOutput;
+import com.company.io.singlemachine.SingleIO;
 
 public class Main {
 

@@ -1,11 +1,11 @@
 package com.company;
 
-import com.company.io.SingleInput;
+import com.company.io.InputMethod;
 
 
 public class Input {
-    private SingleInput input;
-    public Input(SingleInput input) {
+    private InputMethod input;
+    public Input(InputMethod input) {
         this.input = input;
     }
 

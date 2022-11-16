@@ -1,12 +1,12 @@
 package com.company;
 
 import com.company.card.Card;
-import com.company.io.SingleOutput;
+import com.company.io.OutputMethod;
 
 public class Output {
 
-    private final SingleOutput output;
-    Output(SingleOutput output){
+    private final OutputMethod output;
+    Output(OutputMethod output){
         this.output = output;
     }
 
