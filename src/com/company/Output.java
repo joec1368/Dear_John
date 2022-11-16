@@ -5,9 +5,13 @@ import com.company.io.SingleOutput;
 
 public class Output {
 
-    private SingleOutput output;
+    private final SingleOutput output;
     Output(SingleOutput output){
         this.output = output;
+    }
+
+    public void broadcast_number_of_people(){
+        System.out.println("number of people");
     }
 
     public void individual_card_set(PlayerStatus playerstatus, Card new_card){

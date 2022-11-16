@@ -31,7 +31,7 @@ public class Main {
     Output output = new Output(new SingleOutput());
 
     void setup() {
-        Output_static.broadcast_number_of_people();
+        output.broadcast_number_of_people();
         playerNumber = Input.player_Number();
         playerlist = new PlayerStatus[playerNumber];
         for (int i = 0; i < playerNumber; i++) playerlist[i] = new PlayerStatus(i);
