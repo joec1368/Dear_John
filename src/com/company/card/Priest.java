@@ -13,7 +13,7 @@ public class Priest extends Card{
 
     @Override
     public void action(PlayerStatus hostPlayer, int number, PlayerStatus clientPlayer, Deck deck, RemainDeck remainDeck, Output output) {
-        output.individual_opponent_card(clientPlayer);
+        output.individual_opponent_card(clientPlayer, hostPlayer);
         remainDeck.discard(this);
     }
 }

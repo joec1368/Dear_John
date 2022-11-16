@@ -66,7 +66,7 @@ public class Main {
             }
             if (count > 1) {
                 while (true) {
-                    output.individual_choose_target();
+                    output.individual_choose_target(player);
                     clientPlayer = input.client_player();
                     if (playerlist[clientPlayer].getStatus() == PlayerStatus.Status.alive) break;
                 }
@@ -91,7 +91,7 @@ public class Main {
             }
         }
         if (card.cardValue() == 1) {
-            output.individual_choose_target_number();
+            output.individual_choose_target_number(player);
             guessNumber = input.guess_Number();
             output.broadcast_show_target_number(j,guessNumber);
         }

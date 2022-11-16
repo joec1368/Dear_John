@@ -15,12 +15,15 @@ public class Output {
     }
 
     public void individual_card_set(PlayerStatus playerstatus, Card new_card){
-        output.println("You : " + playerstatus.getId());
-        output.println("id : " + new_card.cardValue() + "  card name :  " + new_card + " ||| " + " id : " +  playerstatus.getCard().cardValue() +"  card name :  " + playerstatus.getCard());
+        output.println("You : " + playerstatus.getId(), playerstatus.getId());
+        output.println(
+            "id : " + new_card.cardValue() + "  card name :  " + new_card + " ||| " + " id : " +  playerstatus.getCard().cardValue() +"  card name :  " + playerstatus.getCard(),
+            playerstatus.getId()
+        );
     }
 
-    public void individual_left_right(){
-        output.println("left , right");
+    public void individual_left_right(PlayerStatus playerStatus){
+        output.println("left , right", playerStatus.getId());
     }
 
     public void broadcast_player_status(PlayerStatus[] playerlist, RemainDeck remainDeck){
@@ -32,8 +35,8 @@ public class Output {
         output.println();
     }
 
-    public void individual_choose_target(){
-        output.println("target : ");
+    public void individual_choose_target(PlayerStatus playerStatus){
+        output.println("target : ", playerStatus.getId());
     }
 
     public void broadcast_show_target(int j,int i){
@@ -42,8 +45,8 @@ public class Output {
         output.println();
     }
 
-    public void individual_choose_target_number(){
-        output.println("number : ");
+    public void individual_choose_target_number(PlayerStatus playerStatus){
+        output.println("number : ", playerStatus.getId());
     }
 
     public void broadcast_show_target_number(int j,int guessNumber){
@@ -65,8 +68,8 @@ public class Output {
         output.println();
     }
 
-    public void individual_opponent_card(PlayerStatus clientPlayer){
-        output.println(clientPlayer.getCard().toString());
+    public void individual_opponent_card(PlayerStatus clientPlayer, PlayerStatus thisPlayer){
+        output.println(clientPlayer.getCard().toString(), thisPlayer.getId());
     }
 
     public void broadcast_the_card_be_discard(PlayerStatus playerStatus){

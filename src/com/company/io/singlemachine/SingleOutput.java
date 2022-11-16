@@ -16,4 +16,17 @@ class SingleOutput implements OutputMethod {
     public void print(String string) {
         System.out.print(string);
     }
+
+    @Override
+    public void println(int id) {
+        println();
+    }
+    @Override
+    public void println(String string, int id) {
+        println(string);
+    }
+    @Override
+    public void print(String string, int id) {
+        print(string);
+    }
 }

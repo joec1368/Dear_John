@@ -17,7 +17,7 @@ public class PlayerStatus {
     public Card turn(Deck deck, Input input, Output output) {
         Card card = deck.draw();
         output.individual_card_set(this,card);
-        output.individual_left_right();
+        output.individual_left_right(this);
         boolean discardNew = true;
         String temp = input.input_left_right();
         if(temp.equals("right")) discardNew = false;
