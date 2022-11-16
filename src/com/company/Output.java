@@ -5,10 +5,8 @@ import com.company.io.SingleOutput;
 
 public class Output {
 
-    RemainDeck remainDeck;
     private SingleOutput output;
-    Output(RemainDeck remainDeck, SingleOutput output){
-        this.remainDeck = remainDeck;
+    Output(SingleOutput output){
         this.output = output;
     }
 
@@ -21,7 +19,7 @@ public class Output {
         output.println("left , right");
     }
 
-    public void broadcast_player_status(PlayerStatus[] playerlist){
+    public void broadcast_player_status(PlayerStatus[] playerlist, RemainDeck remainDeck){
         output.println("show all player status");
         for (PlayerStatus player: playerlist) {
             output.println("player: " + player.getId() + " " + player.getStatus() + " ");
