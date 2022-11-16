@@ -6,20 +6,14 @@ import com.company.io.SingleOutput;
 public class Output {
 
     int playerNumber;
-    Deck deck;
     PlayerStatus[] playerlist;
     RemainDeck remainDeck;
     private SingleOutput output;
-    Output(PlayerStatus[] playerlist ,Deck deck, RemainDeck remainDeck,int playerNumber, SingleOutput output){
-        this.deck = deck;
+    Output(PlayerStatus[] playerlist, RemainDeck remainDeck, int playerNumber, SingleOutput output){
         this.playerlist = playerlist;
         this.remainDeck = remainDeck;
         this.playerNumber = playerNumber;
         this.output = output;
-    }
-
-    public void broadcast_card(int playerNumber){
-
     }
 
     public void individual_card_set(PlayerStatus playerstatus, Card new_card){
