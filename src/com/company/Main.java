@@ -16,7 +16,7 @@ public class Main {
         setup();
         int i = 0;
         while (true) {
-            output.broadcast_player_status();
+            output.broadcast_player_status(playerlist);
             if (playerlist[i].getStatus() != PlayerStatus.Status.dead)
                 if (running(playerlist[i],i)) break;
             i++;
@@ -34,10 +34,10 @@ public class Main {
         Output_static.broadcast_number_of_people();
         playerNumber = Input.player_Number();
         playerlist = new PlayerStatus[playerNumber];
-        for (int i = 0; i < playerNumber; i++) playerlist[i] = new PlayerStatus();
+        for (int i = 0; i < playerNumber; i++) playerlist[i] = new PlayerStatus(i);
         deck = new Deck();
         remainDeck = new RemainDeck();
-        output = new Output(playerlist, remainDeck, new SingleOutput());
+        output = new Output(remainDeck, new SingleOutput());
         for (PlayerStatus player : playerlist) {
             player.setStatus(PlayerStatus.Status.alive);
             player.setupDraw(deck);

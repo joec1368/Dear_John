@@ -5,24 +5,15 @@ import com.company.io.SingleOutput;
 
 public class Output {
 
-    PlayerStatus[] playerlist;
     RemainDeck remainDeck;
     private SingleOutput output;
-    Output(PlayerStatus[] playerlist, RemainDeck remainDeck, SingleOutput output){
-        this.playerlist = playerlist;
+    Output(RemainDeck remainDeck, SingleOutput output){
         this.remainDeck = remainDeck;
         this.output = output;
     }
 
     public void individual_card_set(PlayerStatus playerstatus, Card new_card){
-        int count = 0;
-        for (PlayerStatus player : playerlist) {
-            if(player == playerstatus){
-                output.println("You : " + count);
-            }else{
-                count++;
-            }
-        }
+        output.println("You : " + playerstatus.getId());
         output.println("id : " + new_card.cardValue() + "  card name :  " + new_card + " ||| " + " id : " +  playerstatus.getCard().cardValue() +"  card name :  " + playerstatus.getCard());
     }
 
@@ -30,10 +21,10 @@ public class Output {
         output.println("left , right");
     }
 
-    public void broadcast_player_status(){
+    public void broadcast_player_status(PlayerStatus[] playerlist){
         output.println("show all player status");
-        for(int i = 0 ; i < this.playerlist.length ; i++){
-            output.println("player: " + i + " " + this.playerlist[i].getStatus() + " ");
+        for (PlayerStatus player: playerlist) {
+            output.println("player: " + player.getId() + " " + player.getStatus() + " ");
         }
         output.println("left card" + remainDeck.remain);
         output.println();
