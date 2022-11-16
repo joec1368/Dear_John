@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.card.Card;
+import com.company.io.SingleOutput;
 
 import java.util.Scanner;
 
@@ -38,7 +39,7 @@ public class Main {
         for (int i = 0; i < playerNumber; i++) playerlist[i] = new PlayerStatus();
         deck = new Deck();
         remainDeck = new RemainDeck();
-        output = new Output(playerlist ,deck,remainDeck,playerNumber);
+        output = new Output(playerlist ,deck,remainDeck,playerNumber, new SingleOutput());
         for (PlayerStatus player : playerlist) {
             player.setStatus(PlayerStatus.Status.alive);
             player.setupDraw(deck);
