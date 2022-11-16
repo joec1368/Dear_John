@@ -1,6 +1,9 @@
 package com.company.io;
 
 public class SingleOutput {
+    SingleOutput() {
+        //only to make constructor package-private
+    }
     public void println() {
         System.out.println();
     }

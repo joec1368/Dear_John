@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class SingleInput {
     private Scanner scanner;
-    public SingleInput() {
+    SingleInput() {
         scanner = new Scanner(System.in);
     }
 

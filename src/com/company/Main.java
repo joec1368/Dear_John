@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.card.Card;
+import com.company.io.SingleIO;
 import com.company.io.SingleInput;
 import com.company.io.SingleOutput;
 
@@ -27,8 +28,9 @@ public class Main {
     Deck deck;
     PlayerStatus[] playerlist;
     RemainDeck remainDeck;
-    Output output = new Output(new SingleOutput());
-    Input input = new Input(new SingleInput());
+    SingleIO io = new SingleIO();
+    Output output = new Output(io.getOutput());
+    Input input = new Input(io.getInput());
 
     void setup() {
         output.broadcast_number_of_people();
