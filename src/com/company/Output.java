@@ -44,10 +44,6 @@ public class Output {
         }
     }
 
-    public void individual_told_one_card(){
-
-    }
-
     public void individual_choose_target(){
         System.out.println("target : ");
     }
@@ -58,9 +54,9 @@ public class Output {
 
     public void broadcast_winner(int winPlayerSecond,int winPlayer){
         if(winPlayerSecond == -1)
-            System.out.print("winener : " + String.valueOf(winPlayer ));
+            System.out.print("winner : " + String.valueOf(winPlayer ));
         else
-            System.out.print("winener : " + String.valueOf(winPlayer) + "," + String.valueOf(winPlayerSecond));
+            System.out.print("winner : " + String.valueOf(winPlayer) + "," + String.valueOf(winPlayerSecond));
 
     }
 }
