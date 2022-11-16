@@ -11,7 +11,7 @@ public class Output {
     }
 
     public void broadcast_number_of_people(){
-        System.out.println("number of people");
+        output.println("number of people");
     }
 
     public void individual_card_set(PlayerStatus playerstatus, Card new_card){
