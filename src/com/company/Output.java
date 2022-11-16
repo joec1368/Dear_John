@@ -28,7 +28,7 @@ public class Output {
                 count++;
             }
         }
-        System.out.println("id : " + new_card.cardValue() + "  card name :  " + new_card + " ||| " + " id : " +  playerlist[playerNumber].getCard().cardValue() +"  card name :  " + playerlist[playerNumber].getCard());
+        System.out.println("id : " + new_card.cardValue() + "  card name :  " + new_card + " ||| " + " id : " +  playerstatus.getCard().cardValue() +"  card name :  " + playerstatus.getCard());
     }
 
     public void individual_left_right(){
