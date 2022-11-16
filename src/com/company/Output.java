@@ -38,10 +38,10 @@ public class Output {
     public void broadcast_player_status(){
         System.out.println("show all player status");
         for(int i = 0 ; i < this.playerlist.length ; i++){
-            System.out.println("player : " + i + "  " + this.playerlist[i].getCard() + " ");
             System.out.println("player: " + i + " " + this.playerlist[i].getStatus() + " ");
-            System.out.println();
         }
+        System.out.println("left card" + remainDeck.remain);
+        System.out.println();
     }
 
     public void individual_choose_target(){
