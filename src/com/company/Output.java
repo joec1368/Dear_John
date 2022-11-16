@@ -5,14 +5,12 @@ import com.company.io.SingleOutput;
 
 public class Output {
 
-    int playerNumber;
     PlayerStatus[] playerlist;
     RemainDeck remainDeck;
     private SingleOutput output;
-    Output(PlayerStatus[] playerlist, RemainDeck remainDeck, int playerNumber, SingleOutput output){
+    Output(PlayerStatus[] playerlist, RemainDeck remainDeck, SingleOutput output){
         this.playerlist = playerlist;
         this.remainDeck = remainDeck;
-        this.playerNumber = playerNumber;
         this.output = output;
     }
 

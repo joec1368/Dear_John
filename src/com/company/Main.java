@@ -37,7 +37,7 @@ public class Main {
         for (int i = 0; i < playerNumber; i++) playerlist[i] = new PlayerStatus();
         deck = new Deck();
         remainDeck = new RemainDeck();
-        output = new Output(playerlist, remainDeck, playerNumber, new SingleOutput());
+        output = new Output(playerlist, remainDeck, new SingleOutput());
         for (PlayerStatus player : playerlist) {
             player.setStatus(PlayerStatus.Status.alive);
             player.setupDraw(deck);
