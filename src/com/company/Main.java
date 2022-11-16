@@ -1,6 +1,5 @@
 package com.company;
 
-import com.company.card.Baron;
 import com.company.card.Card;
 
 import java.util.Scanner;
@@ -16,8 +15,7 @@ public class Main {
         setup();
         int i = 0;
         while (true) {
-            System.out.println("show all player");
-            view_all_information(playerNumber);
+            output.broadcast_player_status();
             if (playerlist[i].getStatus() != PlayerStatus.Status.dead)
                 if (running(playerlist[i],i)) break;
             i++;
@@ -30,27 +28,32 @@ public class Main {
     PlayerStatus[] playerlist;
     RemainDeck remainDeck;
     Scanner sca;
+    Output output;
 
     void setup() {
-        System.out.println("number of people : ");
+        Output_static.broadcast_number_of_people();
         sca = new Scanner(System.in);
-        playerNumber = sca.nextInt();
+        playerNumber = Input.player_Number();
         playerlist = new PlayerStatus[playerNumber];
         for (int i = 0; i < playerNumber; i++) playerlist[i] = new PlayerStatus();
         deck = new Deck();
         remainDeck = new RemainDeck();
+        output = new Output(playerlist ,deck,remainDeck,playerNumber);
         for (PlayerStatus player : playerlist) {
             player.setStatus(PlayerStatus.Status.alive);
             player.setupDraw(deck);
+            player.setOutput(output);
         }
+
+
     }
 
     boolean running(PlayerStatus player , int j) {
-        System.out.println("you : " + j);
-        information(player);
-        System.out.println();
+//        System.out.println("you : " + j);
+//        information(player);
+//        System.out.println();
         Card card = player.turn(deck);
-        System.out.println("you : " + j);
+//        System.out.println("you : " + j);
         if (player.getStatus() == PlayerStatus.Status.infeasible) player.setStatus(PlayerStatus.Status.alive);
         int guessNumber = 0;// decide by input
         int clientPlayer = 0;//decide by input
@@ -65,8 +68,8 @@ public class Main {
             }
             if (count > 1) {
                 while (true) {
-                    System.out.print("target : ");
-                    clientPlayer = sca.nextInt();
+                    output.individual_choose_target();
+                    clientPlayer = Input.client_player();
                     if (playerlist[clientPlayer].getStatus() == PlayerStatus.Status.alive) break;
                 }
             } else {
@@ -88,14 +91,15 @@ public class Main {
             }
         }
         if (card.cardValue() == 1) {
-            System.out.print("number : ");
-            guessNumber = sca.nextInt();
+            output.individual_choose_target_number();
+            guessNumber = Input.guess_Number();
         }
         card.action(player, guessNumber, playerlist[clientPlayer], deck, remainDeck);
-        System.out.println();
-        System.out.println("player : " + j);
-        information(player);
-        System.out.println();
+//        System.out.println();
+//        System.out.println("player : " + j);
+//        information(player);
+//        System.out.println();
+
         count_dead = 0;
         for (int i = 0; i < playerNumber; i++) {
             if (playerlist[i].getStatus() == PlayerStatus.Status.dead) count_dead++;
@@ -128,16 +132,18 @@ public class Main {
                 }
             }
         }
-        if(winPlayerSecond == -1)
-            System.out.print("winener : " + String.valueOf(winPlayer ));
-        else
-            System.out.print("winener : " + String.valueOf(winPlayer) + "," + String.valueOf(winPlayerSecond));
-
+//        if(winPlayerSecond == -1)
+//            System.out.print("winener : " + String.valueOf(winPlayer ));
+//        else
+//            System.out.print("winener : " + String.valueOf(winPlayer) + "," + String.valueOf(winPlayerSecond));
+        output.broadcast_winner(winPlayerSecond,winPlayer);
     }
+
     void information(PlayerStatus player){
         System.out.println("your card " + player.getCard());
         System.out.println("left card" + remainDeck.remain);
     }
+
     void view_all_information(int playerNumber){
         for(int i = 0 ; i < playerNumber ; i++){
             System.out.println("player : " + i + "  " + playerlist[i].getCard() + " ");

@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class PlayerStatus {
     private Card card;
     private Status status;
+    private Output output;
 
     public void setupDraw(Deck deck) {
         this.card = deck.draw();
@@ -15,11 +16,11 @@ public class PlayerStatus {
 
     public Card turn(Deck deck) {
         Card card = deck.draw();
-        System.out.println("id : " + card.cardValue() + "  card name :  " + card + " ||| " + " id : " +  this.getCard().cardValue() +"  card name :  " + this.getCard());
-        System.out.println("left , right");
+        output.individual_card_set(this,card);
+        output.individual_left_right();
         Scanner sca = new Scanner(System.in);
         boolean discardNew = true;
-        String temp = sca.next();
+        String temp = Input.input_left_right();
         if(temp.equals("right")) discardNew = false;
         //decide by input
         if(discardNew){
@@ -47,4 +48,5 @@ public class PlayerStatus {
         return status;
     }
     public void setStatus(Status status){this.status = status;}
+    public void setOutput(Output output){this.output = output;}
 }
