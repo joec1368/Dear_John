@@ -28,12 +28,10 @@ public class Main {
     Deck deck;
     PlayerStatus[] playerlist;
     RemainDeck remainDeck;
-    Scanner sca;
     Output output;
 
     void setup() {
         Output_static.broadcast_number_of_people();
-        sca = new Scanner(System.in);
         playerNumber = Input.player_Number();
         playerlist = new PlayerStatus[playerNumber];
         for (int i = 0; i < playerNumber; i++) playerlist[i] = new PlayerStatus();
