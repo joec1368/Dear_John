@@ -1,16 +1,19 @@
 package com.company;
 
 import com.company.card.Card;
+import com.company.io.IO;
+import com.company.io.multimachine.HostIO;
+import com.company.io.multimachine.HostIOImpl;
 import com.company.io.singlemachine.SingleIO;
 
 public class RoomHost {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         RoomHost host = new RoomHost();
         host.start(args);
     }
 
-    public void start(String[] args) {
+    public void start(String[] args) throws Exception {
         setup();
         int i = 0;
         while (true) {
@@ -26,13 +29,20 @@ public class RoomHost {
     Deck deck;
     PlayerStatus[] playerlist;
     RemainDeck remainDeck;
-    SingleIO io = new SingleIO();
-    Output output = new Output(io.getOutput());
-    Input input = new Input(io.getInput());
 
-    void setup() {
+    //    SingleIO io = new SingleIO();
+    IO io;
+    Output output;
+    Input input;
+
+    void setup() throws Exception {
+        io = new HostIOImpl();
+        output = new Output(io.getOutput());
+        input = new Input(io.getInput());
+
         output.host_number_of_people();
         playerNumber = input.host_player_Number();
+        io.waitPlayersReady(playerNumber);
         playerlist = new PlayerStatus[playerNumber];
         for (int i = 0; i < playerNumber; i++) playerlist[i] = new PlayerStatus(i);
         deck = new Deck();

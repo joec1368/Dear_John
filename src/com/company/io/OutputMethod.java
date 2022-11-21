@@ -5,7 +5,7 @@ public interface OutputMethod {
     void println(String string);
     void print(String string);
 
-    void println(int id);
-    void println(String string, int id);
-    void print(String string, int id);
+    void println(int id) throws IdNotExistException;
+    void println(String string, int id) throws IdNotExistException;
+    void print(String string, int id) throws IdNotExistException;
 }
