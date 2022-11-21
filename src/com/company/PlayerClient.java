@@ -24,11 +24,14 @@ public class PlayerClient {
         Client client = new ClientImpl();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Room host ip: ");
-        String ip = scanner.next();
+        String hostIp = scanner.next();
+        System.out.print("My ip: ");
+        String myIp = scanner.next();
         System.out.print("room number: ");
         int roomNumber = scanner.nextInt();
 
-        Registry registry = LocateRegistry.getRegistry(ip, roomNumber);
+
+        Registry registry = LocateRegistry.getRegistry(hostIp, roomNumber);
         Remote r = registry.lookup("room_host");
         HostIO host = (HostIO) r;
 
@@ -37,6 +40,6 @@ public class PlayerClient {
         registry = LocateRegistry.createRegistry(DEFAULT_PORT);
         registry.rebind(String.format("%d-%d", roomNumber, id), UnicastRemoteObject.exportObject(client, 0));
 
-        host.enter(ip, id);
+        host.enter(myIp, id);
     }
 }
