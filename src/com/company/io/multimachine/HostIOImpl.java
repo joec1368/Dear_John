@@ -37,14 +37,13 @@ public class HostIOImpl implements HostIO, IO {
         input = new HostInput(clients);
 
         output.print("room number: ", 0);
-        int roomNumber = input.nextInt(0);
+        this.roomNumber = input.nextInt(0);
+        output.print("Your IP is: ", 0);
+        String ip = input.next(0);
 
+        System.setProperty("java.rmi.server.hostname", ip);
         registry = LocateRegistry.createRegistry(roomNumber);
         registry.rebind("room_host", UnicastRemoteObject.exportObject(this, 0));
-
-        System.out.println("Your IP: ");
-        System.out.println(InetAddress.getLocalHost().getHostAddress());
-        this.roomNumber = roomNumber;
     }
 
     public synchronized int getId() throws RemoteException {
@@ -69,7 +68,14 @@ public class HostIOImpl implements HostIO, IO {
     @Override
     public void waitPlayersReady(int playerNumber) {
         totalPlayerNumber = playerNumber;
-        while (!playersReady) ; //loop forever, playersReady will be set in enter
+        while (!playersReady) {
+            //loop forever, playersReady will be set in enter
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                //just ignore it
+            }
+        }
     }
 
     @Override
