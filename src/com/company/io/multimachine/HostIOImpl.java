@@ -50,13 +50,13 @@ public class HostIOImpl implements HostIO, IO {
         return nextId++;
     }
 
-    public synchronized void enter(int id) throws RemoteException, NotBoundException {
+    public synchronized void enter(String ip, int id) throws RemoteException, NotBoundException {
         if (totalPlayerNumber == -1) {
             //if playerNumber hasn't set, do nothing
             return;
         }
 
-        Registry registry = LocateRegistry.getRegistry(roomNumber);
+        Registry registry = LocateRegistry.getRegistry(ip);
         clients.add((Client) registry.lookup(String.format("%d-%d", roomNumber, id)));
         currentPlayerNumber++;
         if (currentPlayerNumber == totalPlayerNumber) {
