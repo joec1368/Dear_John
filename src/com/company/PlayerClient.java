@@ -25,8 +25,6 @@ public class PlayerClient {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Room host ip: ");
         String hostIp = scanner.next();
-        System.out.print("My ip: ");
-        String myIp = scanner.next();
         System.out.print("room number: ");
         int roomNumber = scanner.nextInt();
 
@@ -37,9 +35,8 @@ public class PlayerClient {
 
         int id = host.getId();
 
-        registry = LocateRegistry.createRegistry(DEFAULT_PORT);
         registry.rebind(String.format("%d-%d", roomNumber, id), UnicastRemoteObject.exportObject(client, 0));
 
-        host.enter(myIp, id);
+        host.enter(id);
     }
 }
