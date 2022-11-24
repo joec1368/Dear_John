@@ -162,11 +162,11 @@ public class RoomHost {
     }
 }
 //todo
-//8 princess : loss if discarded
-//7 countess : discard if caught with king or prince
-//6 king : trade hands
-//5 prince : one player discards his or her hand
-//4 handmaid : protection until your next turn
-//3 baron : compare hands ; lower hand is out
-//2 priest : look at a hand
-//1 guard : guess a player's hand
+//8 princess (1) : loss if discarded
+//7 countess (1) : discard if caught with king or prince
+//6 king (1) : trade hands
+//5 prince (2) : one player discards his or her hand
+//4 handmaid (2) : protection until your next turn
+//3 baron (2) : compare hands ; lower hand is out
+//2 priest (2) : look at a hand
+//1 guard (5) : guess a player's hand
